@@ -1,0 +1,175 @@
+.app-toolbar{
+  background-color: rgb(237, 234, 222);
+  height: 65px;
+  padding-top: 4px;
+  padding-left:2px;
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+  /* opacity: 0.7; */
+}
+router-outlet{
+  margin-bottom: 100px;
+}
+#space100{
+  height:100px;
+}
+.sticky {
+  opacity: 0.8;
+  color:white;
+}
+.mat-icon{
+  margin-bottom:12px;
+  color:rgb(35, 35, 156); 
+  transform: scale(1.4);
+}
+mat-toolbar-row a, mat-nav-list a, mat-nav-list button, .mat-menu-a{
+  color:rgb(35, 35, 156);
+  font-family: 'RedHat';
+  font-size: 12pt;
+}
+mat-nav-list a mat-icon{
+  padding: 0px;
+  margin:0px;
+  margin-right:8px;
+  text-align: left;
+  vertical-align: top;
+}
+.menuleftimg{
+  width:90px;
+}
+.menu-top a{
+  padding: 0px;
+  margin:0px;
+  margin-right: 20px;
+}
+.menu-top mat-icon{
+  margin-right: 2px;
+}
+
+.fullscreen{
+  display: inline-block;
+  vertical-align: top;
+  margin-left:4px;
+}
+#headername{
+  color:rgb(35, 35, 156);
+  font-family: 'RedHat';
+  font-size: 12pt;
+  font-weight: bold;
+  text-decoration: none;
+}
+.currentroute{
+  color:rgb(35, 35, 156);
+  font-size:8pt;
+  display: none;
+}
+.textBack a{
+  color: rgb(35, 35, 156);
+  color:red;
+  font-family: 'RedHat';
+  font-size: 8pt;
+  padding-bottom: 10px;
+  text-align: center;
+}
+.mat-sidenav-content {
+    min-height: 1000px;
+}
+.flexExpand {
+  flex: 1 1 auto;
+}
+.divVert{
+  float: left;
+  clear: none;
+}
+#footer{
+  height:100px;
+  width:100%;
+  margin: auto;
+  background-color: rgb(237, 234, 222); 
+  font-family: 'RedHat';
+  font-size: 10pt;
+  position: fixed;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  bottom: 0px; /* Sets the sticky toolbar to be on top */
+  z-index: 1002; /* Ensure that your app's content doesn't overlap the toolbar */
+  opacity: 0.9;
+}
+#kontaktinfo{
+  width :500px;
+  margin: auto;
+  padding-top:0px; 
+  padding-bottom:0px;
+  top:0px;
+}
+.adresse1{
+  display: inline-block;
+}
+.adresse2{
+  display: inline-block;
+}
+#homeImg{
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 0px;
+}
+.textFooter{
+  display: inline-block;
+  padding: 0px;
+  margin-top: 0px;
+  text-align: left;
+  color:rgb(35, 35, 156);
+  font-family: 'RedHat';
+  font-size: 10pt;
+}
+.adresseline{
+  margin:3px;
+}
+.adresseline img{
+  width:25px;
+  margin-right: 5px;
+}
+.adresseline a{
+  color:rgb(35, 35, 156);
+}
+
+.social{
+  display: inline-block;
+} 
+.social a{
+  color:rgb(35, 35, 156);
+  margin-left:3px;
+}
+/* medium size viewport */
+@media screen and (max-width: 959px) {
+  .menuleftimg{
+    width:70px;
+  } 
+  router-outlet{
+    margin-bottom: 100px;
+    padding-bottom: 100px;
+  }
+  .app-toolbar11{
+    position: fixed;
+  } 
+  #footer{
+   position: fixed;
+  }
+}
+/* small size viewport */
+@media screen and (max-width: 599px) {
+  .menuleftimg{
+    width:70px;
+  }  
+  router-outlet{
+    margin-bottom: 100px;
+    padding-bottom: 100px;
+  }
+  .app-toolbar11{
+    position: fixed;
+  } 
+  #footer{
+   position: fixed;
+  }
+}

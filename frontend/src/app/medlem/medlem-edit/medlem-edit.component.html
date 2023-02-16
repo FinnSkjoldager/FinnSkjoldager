@@ -1,0 +1,11 @@
+<div id="edit-dia">
+<mat-dialog-content class="mat-typography" [formGroup]="form">
+    <div class="textbox" style="font-size:12pt" [innerHTML]="title"></div>
+    <b class="textbox">{{ search }} <span></span> {{ portal }} <span></span> {{ count }}</b>
+    <div class="textbox" [innerHTML]="desc"></div>
+    <div class="textbox"><a *ngIf="isNotEmpty(url)" href="{{url}}" target="_blank">Link</a></div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="close()">Luk</button>
+</mat-dialog-actions>
+</div>

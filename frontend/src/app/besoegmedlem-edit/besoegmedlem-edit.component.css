@@ -1,0 +1,51 @@
+.container{
+  width: 380px;
+}
+.besoeg-form{
+    margin: 10px;
+    padding: 10px;
+    height: 120px;
+    font-size: 0.9em;
+  font-family: sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid black;
+  border-radius: 15px;
+}
+.besoeg-form input[type='text'], 
+.besoeg-form input[type='number'],
+.besoeg-form input[type='email'],
+.besoeg-form select {
+    width:300px;
+}
+
+.besoeg-form .ng-invalid {
+  border-left: 5px solid #a94442;
+}
+
+.besoeg-form .ng-valid {
+  border-left: 5px solid #42A948;
+}
+#checkbox1{
+  font-size: 20px;
+  width: 1em;
+  height: 1em;
+  margin: 0;
+  border:none;
+  border-radius: 10%;
+}
+.button1{
+  margin: 10px;
+}
+#buttonbar{
+  height: 40px;
+}
+.div_float{
+  float: left;
+}
+h3{
+  margin-left:5px;
+}
+.center{
+  margin-left: auto;
+  margin-right: auto;
+}

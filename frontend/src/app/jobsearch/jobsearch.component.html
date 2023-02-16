@@ -1,0 +1,88 @@
+<div class="container">
+  <div>
+    <div class="textTop">
+      <div>Batch Jobsearch with CronJob
+        <div style="float: right;">
+          <a class="textBack" onclick="history.back()" mat-button>
+            <mat-icon>arrow_back</mat-icon>Tilbage
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="choose">
+      <select #jobportal (change)="onSelectedJobportal(jobportal.value)">
+        <option default value="0">All portaler</option>
+        <option value="Jobindex.dk">Jobindex.dk</option>
+        <option value="Jobfinder.dk">Jobfinder.dk</option>
+        <option value="Careerjet.dk">Careerjet.dk</option>
+      </select>
+      <select #querytype (change)="onSelectedQuery(querytype.value)">
+        <option default value="0">Nyeste annoncer</option>
+        <option value="Angular">Job Angular</option>
+        <option value="Laravel">Job Laravel</option>
+        <option value="Java">Job Java</option>
+      </select>
+      <input (change)="onShowDesc(TagShowDesc.checked)" #TagShowDesc type="checkbox" id="idShowDesc" />
+      <label style="font-size:8pt" for="idShoweDesc">Vis beskrivelse</label>
+      <div class="search">
+        <input matInput (keyup)="applyFilter($event)" placeholder="Søg i alle kolonner" #input>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="outTextOn">{{ outText }}</div>
+  <div class="styled-table center">
+    <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="search">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Search</th>
+        <td mat-cell *matCellDef="let element"> {{element.search}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="portal">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Portal</th>
+        <td mat-cell *matCellDef="let element"> {{element.portal}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="textbox" [innerHTML]="element.title"></div>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="count">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Count</th>
+        <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="desc">
+        <th mat-header-cell *matHeaderCellDef>Desc</th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="ShowDesc" class="textbox" [innerHTML]="element.desc"></div>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="company">
+        <th mat-header-cell *matHeaderCellDef>Company</th>
+        <td mat-cell *matCellDef="let element"> {{element.company}} </td>
+      </ng-container>
+      <ng-container matColumnDef="url">
+        <th mat-header-cell *matHeaderCellDef>Url</th>
+        <td mat-cell *matCellDef="let element"><a *ngIf="isNotEmpty(element.url)" href="{{element.url}}"
+            target="_blank">Link</a></td>
+      </ng-container>
+      <ng-container matColumnDef="create">
+        <th mat-header-cell *matHeaderCellDef>Create</th>
+        <td mat-cell *matCellDef="let element"> {{substr(element.create)}} </td>
+      </ng-container>
+      <ng-container matColumnDef="update">
+        <th mat-header-cell *matHeaderCellDef>Update</th>
+        <td mat-cell *matCellDef="let element"> {{substr(element.update)}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowSelected(row)"></tr>
+    </table>
+    <mat-paginator #paginator [length]="totalRows" [pageIndex]="currentPage" [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions" (page)="pageChanged($event)">
+    </mat-paginator>
+  </div>
+</div>

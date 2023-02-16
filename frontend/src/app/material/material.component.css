@@ -1,0 +1,30 @@
+.example-chip-list {
+    width: 100%;
+}
+.example-ripple-container {
+    cursor: pointer;
+    text-align: center;
+  
+    width: 100%;
+    line-height: 300px;
+  
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+  
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .jul1{
+    width: 200px;
+    margin: 0 auto;
+    border: solid 1 blue;
+  }
+  .jul a{
+    background-color: green;
+    color:white;
+    margin:5px;
+    border: solid 1 red;
+  }
+  
+  

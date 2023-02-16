@@ -1,0 +1,61 @@
+<div class="container">
+    <div style="margin:10px">
+        <div class="textTop">Opslag
+            <div style="float: right;">
+                <a class="textBack" onclick="history.back()" mat-button>
+                    <mat-icon>arrow_back</mat-icon>Tilbage
+                </a>
+            </div>
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="30px grid" fxLayoutAlign="flex-start">
+            <div class="card1" id="cvr">
+                <h4>Opslag CVR<div class="og">og Return</div>
+                </h4>
+                <form class="opslag-form" id="fopslagscvr" (keydown.enter)="getOpslagCVR($event,'ENTER')">
+                    <label>Indtast formanavn eller CVR/Pnr</label>
+                    <input class="form-control" #inputCVR id="opslagCVR" type="text" /><br />
+                    <textarea class="form-control" readonly="readonly" rows=8 cols=80 id="res"
+                        value="{{res}}"></textarea>
+                </form>
+                <button class="btn btn-success" (click)="setNew($event)" id="opret">Opret</button>
+                <button class="btn btn-success" form="fopslagscvr" (click)="getOpslagCVR($event,'ENTER')">Søg</button>
+            </div>
+
+            <div class="card1">
+                <h4>Opslag 118.dk telefon nr.<div class="og">og Return</div>
+                </h4>
+                <form class="opslag-form" id="scrap118" (keydown.enter)="getScrap118($event)">
+                    <label>Indtast navn</label>
+                    <input class="form-control" #input118 id="opslagadresse" type="text" /><br />
+                    <textarea class="form-control" readonly="readonly" rows=8 cols=80 id="res"
+                        value="{{resScrap118}}"></textarea>
+                    <button class="btn btn-success" form="scrap118" (click)="getScrap118($event)">Søg</button>
+                </form>
+            </div>
+            <!--div class="card1">
+                <a target="_blank" href="{{ baseUrl+'/opslag/voreselforbrug' }}" mat-button>
+                    <mat-icon>business</mat-icon>
+                    Vores el forbrug
+                </a>
+                <a target="_blank" href="{{ baseUrl+'/opslag/elspotprices' }}" mat-button>
+                    <mat-icon>business</mat-icon>
+                    El Spot Prices
+                </a>
+            </div-->
+            <div class="card1">
+                <h4>Opslag adresse<div class="og">tast og vent</div>
+                </h4>
+                <form class="opslag-form" (keydown.enter)="getOpslagAdresse($event)">
+                    <label>Indtast vejnavn</label>
+                    <input class="form-control" id="opslagadresse" type="text"
+                        (keydown)="getOpslagAdresse($event)" /><br />
+                    <select class="form-control" id="opslagselect" (change)="onCheckboxChange($event)">
+                        <option *ngFor="let adr of adressArr" [value]="adr">{{adr}}</option>
+                    </select>
+                    <textarea class="form-control" readonly="readonly" rows=7 cols=80 id="res"
+                        value="{{resadresse}}"></textarea>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

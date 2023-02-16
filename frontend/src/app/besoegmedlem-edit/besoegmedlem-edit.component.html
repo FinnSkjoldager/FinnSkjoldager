@@ -1,0 +1,30 @@
+<div class="container">
+  <div style="margin:10px" >
+    <div class="textTop">Tilføj medlem
+    <div style="float: right;">
+      <a class="textBack" onclick="history.back()"  mat-button><mat-icon>arrow_back</mat-icon>Tilbage</a>
+    </div>
+  </div>
+  <div class="textBesoeg">
+    <b>Besøg hos:</b>&nbsp;&nbsp;{{ besoegText }}
+  </div>
+  <form (ngSubmit)="submit()" #besoegForm="ngForm" class="besoeg-form center" novalidate>
+    <div class="form-group">
+      <select [(ngModel)]="medlemActive" class="form-control" name="medlemfield">
+        <option *ngFor="let medlem of medlemmer" [ngValue]="medlem">
+          {{ medlem.fornavn }}&nbsp;&nbsp;{{ medlem.efternavn }}
+        </option>
+      </select>
+    </div>
+    <div id="buttonbar">
+        <div class="pull-right">
+        <button type="submit" class="btn btn-success" [disabled]="besoegForm.pristine || !besoegForm.valid">
+          {{ operationText }}
+        </button>
+      </div>
+    </div>
+    <div class="alert alert-danger" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+  </form>
+</div>

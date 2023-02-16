@@ -1,0 +1,45 @@
+<div class="example-ripple-container mat-elevation-z41"
+matRipple
+[matRippleCentered]="centered"
+[matRippleDisabled]="disabled"
+[matRippleUnbounded]="unbounded"
+[matRippleRadius]="radius"
+[matRippleColor]="color">
+<div *ngIf="true" class="jul">
+  <a href="{{ julesti + 'Frujensenfratolne.pdf'}}"  mat-button>Fru Jensen fra Tolne</a>
+  <a href="{{ julesti + 'Hjemstawn.pdf'}}"  mat-button>Hjemstawn</a>
+  <a href="{{ julesti + 'IngenelskersomenVendelbo.pdf'}}"  mat-button>Ingen elsker som en Vendelbo</a>
+  <a href="{{ julesti + 'BamsesVennerVennerKomOgSe.pdf'}}"  mat-button>Venner kom og se</a>
+  <a href="{{ julesti + 'Åbnelandskab.pdf'}}"  mat-button>Åbne landskab</a>
+</div>
+
+<mat-form-field class="example-chip-list" appearance="fill">
+    <mat-label>Favorite Fruits</mat-label>
+    <mat-chip-list #chipList aria-label="Fruit selection">
+      <mat-chip
+        *ngFor="let fruit of fruits"
+        (removed)="remove(fruit)">
+        {{fruit}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="New fruit..."
+        #fruitInput
+        [formControl]="fruitCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+        {{fruit}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-spinner></mat-spinner>
+  </div>
+  
+  

@@ -1,0 +1,24 @@
+frontend/.angular/cache
+# NPM
+frontend/node_modules
+frontend/npm-debug.log
+frontend/sandboxes.ts
+
+# Code Editor Settings
+frontend/.idea
+frontend/.vs
+
+# Build Generated Files
+frontend/src/app/**/*.js
+frontend/src/app/**/*.js.map
+
+# Ignore any Webpack generated files
+frontend/dist
+frontend/src/app/devDist
+frontend/src/app/dist
+
+frontend/cypress/videos/
+frontend/cypress/screenshots/
+
+
+

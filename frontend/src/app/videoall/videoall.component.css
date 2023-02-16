@@ -1,0 +1,9 @@
+.outher{
+    display: grid;
+    margin-bottom: 20px;
+}
+.inner{
+    align-self: center;
+    justify-self: center;
+    align-self: center
+}

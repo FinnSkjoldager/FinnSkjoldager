@@ -1,0 +1,23 @@
+.container {
+    width: 500px;
+}
+/* medium size viewport */
+@media screen and (max-width: 959px) {
+  .styled-table {
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+    padding: 4px;
+  }
+}
+/* small size viewport */
+@media screen and (max-width: 599px) {
+  .styled-table {
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+    padding: 4px;
+  }
+}

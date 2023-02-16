@@ -1,0 +1,58 @@
+.container{
+    width:100%;
+}
+.choose{
+    width:500px;
+    margin:auto;
+    padding:0px;
+    font-size:8pt;
+}
+.choose select{
+    margin-left:8px;
+}
+#idShowDesc, #idShowDesc label{
+    margin-left:5px;
+    width: 17px;
+    height: 17px;
+    font-size: 8pt;
+}
+.checkbox{
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    margin-left:5px;
+}
+label{
+    margin-left:3px;
+    font-size:9pt;
+}
+.search{
+    display: inline-block;
+    margin-left:5px;
+    width: 95px;
+    font-size: 9pt;
+}
+table{
+    width:100%;
+}
+table tr td{
+    opacity: 1;
+    padding: 4px;
+}
+th.mat-header-cell{
+   color: white; 
+   font-size: 10pt;
+   padding: 4px;
+}
+th.mat-sort-header {
+    color: yellow;
+    font-size: 10pt;
+    padding: 4px;
+}
+.mat-row:hover .mat-cell{
+    background-color: #fff5a2;
+}
+mat-paginator {
+    font-size: 11pt;
+    color:blue;
+}

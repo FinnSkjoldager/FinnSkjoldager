@@ -1,0 +1,185 @@
+<div>
+  <mat-toolbar class="app-toolbar" id="navbar">
+    <mat-toolbar-row style="padding-left:6px; ">
+      <div id="menuleft">
+        <img src="assets/logo.png" width=40px style="margin-left:0px; margin-right:0px;" />
+        <div class="currentroute">
+          {{ currentRoute }}
+        </div>
+        <a routerLink="/" id="headername">
+          Finn Skjoldager
+        </a>
+        <img class="menuleftimg" src="assets/Lavarel.png" width=73px style="margin-left:0px" />
+        <img class="menuleftimg" src="assets/angular.png" width=73px style="margin-left:0px" />
+      </div>
+      <div fxShow="true" fxHide.lt-md="true" center class="menu-top" style="margin-left:8px">
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <a routerLink="/hvadviljeg" mat-button>
+          <img src="assets/succes1.png" width=35px />
+          Hvad vil jeg ?
+        </a>
+        <div *ngFor="let item of menuArr" style="display: inline-block;">
+          <div *ngIf="item.subMenu" style="display: inline-block;">
+            <button mat-button class="mat-menu-a" [matMenuTriggerFor]="belowMenu">
+              <mat-icon>{{ item.maticon }}</mat-icon>
+              {{ item.name }}
+              <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+            <mat-menu #belowMenu="matMenu" yPosition="below">
+              <div *ngFor="let subItem of item.subMenu">
+                <a *ngIf="!subItem.target" class="mat-menu-a" routerLink="{{ subItem.routerLink }}" mat-menu-item>
+                  <mat-icon>{{ subItem.maticon }}</mat-icon>
+                  {{ subItem.name }}
+                </a>
+                <a *ngIf="subItem.target" class="mat-menu-a" target="_blank" href="{{ subItem.routerLink }}"
+                  mat-menu-item>
+                  <mat-icon>{{ subItem.maticon }}</mat-icon>
+                  {{ subItem.name }}
+                </a>
+              </div>
+            </mat-menu>
+          </div>
+          <div *ngIf="!item.subMenu">
+            <a *ngIf="!item.target" routerLink="{{ item.routerLink }}" mat-button>
+              <mat-icon>{{ item.maticon }}</mat-icon>
+              {{ item.name }}
+            </a>
+            <a *ngIf="item.target" target="_blank" href="{{ item.routerLink }}" mat-button>
+              <mat-icon>{{ item.maticon }}</mat-icon>
+              {{ item.name }}
+            </a>
+          </div>
+        </div>
+        <a (click)="goFullScreen(!fullScreen)" mat-button>
+          <mat-icon *ngIf="fullScreen">fullscreen_exit</mat-icon>
+          <mat-icon *ngIf="!fullScreen">fullscreen</mat-icon>
+          <div *ngIf="fullScreen" class="fullscreen">Exit Full Screen</div>
+          <div *ngIf="!fullScreen" class="fullscreen">Full Screen</div>
+        </a>
+      </div>
+      <span class="flexExpand"></span>
+      <!--(click)="sidenavtoggle(sidenav)"-->
+      <button class="menu-icon" mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm *ngIf="true">
+        <mat-icon aria-label="Side nav toggle icon" *ngIf="!sidenav.opened; else showCross">
+          menu
+        </mat-icon>
+        <ng-template #showCross>
+          <mat-icon aria-label="Side nav toggle icon">close</mat-icon>
+        </ng-template>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container fxFlexFill style="background-color:white">
+    <mat-sidenav #sidenav fxHide.gt-sm="true" (click)="sidenav.toggle()">
+      <mat-nav-list>
+        <a routerLink="/hvadviljeg" mat-list-item>
+          <img src="assets/succes1.png" width=35px />
+          Hvad vil jeg ?
+        </a>
+        <div *ngFor="let item of menuArr">
+          <div *ngIf="item.subMenu">
+            <button class="mat-menu-a" [matMenuTriggerFor]="belowMenu" mat-list-item>
+              <mat-icon style="margin-right:8px;">{{ item.maticon }}</mat-icon>
+              {{ item.name }}
+              <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+            <mat-menu #belowMenu="matMenu" yPosition="below">
+              <div *ngFor="let subItem of item.subMenu">
+                <a *ngIf="!subItem.target" class="mat-menu-a" routerLink="{{ subItem.routerLink }}" mat-menu-item>
+                  <mat-icon>{{ subItem.maticon }}</mat-icon>
+                  {{ subItem.name }}
+                </a>
+                <a *ngIf="subItem.target" class="mat-menu-a" target="_blank" href="{{ subItem.routerLink }}"
+                  mat-menu-item>
+                  <mat-icon>{{ subItem.maticon }}</mat-icon>
+                  {{ subItem.name }}
+                </a>
+              </div>
+            </mat-menu>
+          </div>
+          <div *ngIf="!item.subMenu">
+            <a *ngIf="!item.target" routerLink="{{ item.routerLink }}" mat-list-item>
+              <mat-icon>{{ item.maticon }}</mat-icon>
+              {{ item.name }}
+            </a>
+            <a *ngIf="item.target" target="_blank" href="{{ item.routerLink }}" mat-list-item>
+              <mat-icon>{{ item.maticon }}</mat-icon>
+              {{ item.name }}
+            </a>
+          </div>
+        </div>
+        <a (click)="goFullScreen(!fullScreen)" mat-list-item>
+          <mat-icon *ngIf="fullScreen">fullscreen_exit</mat-icon>
+          <mat-icon *ngIf="!fullScreen">fullscreen</mat-icon>
+          <div class="fullscreen" *ngIf="fullScreen">Exit Full Screen</div>
+          <div class="fullscreen" *ngIf="!fullScreen">Full Screen</div>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill class="bag-img1">
+      <div *ngIf="textTop != ''" style="margin:10px">
+        <div class="textTop1">{{ textTop }}
+          <div class="textBack">
+            <a routerLink=".." mat-button>
+              <mat-icon>arrow_back</mat-icon>Tilbage
+            </a>
+          </div>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+      <div id="space100"></div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <div id="footer">
+    <div id="kontaktinfo">
+      <div class="adresse1">
+        <div id="homeImg">
+          <img src="assets/Home1.png" width="50px">
+        </div>
+        <div class="textFooter">
+          Finn Skjoldager<br>
+          Visbjerg Hegn 226<br>
+          8320 Mårslet<br>
+        </div>
+      </div>
+      <div class="adresse2">
+        <div class="adresseline">
+          <img src="assets/phone.png">
+          <a target="_blank" href="tel:30324276">3032 4276</a>
+        </div>
+        <div class="adresseline">
+          <img src="assets/mail3.png" />
+          <a target="_blank" href="mailto:finn.skjold@gmail.com">finn.skjold@gmail.com</a>
+        </div>
+        <div class="adresseline">
+          <img src="assets/www.png" />
+          <a target="_blank" href="http://finnskjold.dk">finnskjold.dk</a>
+        </div>
+      </div>
+      <div class="social">
+        <div class="adresseline">
+        <img src="assets/LinkedIn_icon.svg.png" width="20px" style="margin-left:6px;" />
+        <a target="_blank" href="https://www.linkedin.com/in/finn-skjoldager-821b138/"
+          style="margin-left:7px;">Linkedin</a>
+        </div>
+          <div class="adresseline">
+        <img src="assets/facebook.png" width="30px" />
+        <a target="_blank" href="https://www.facebook.com/finn.skjoldager">Facebook</a>
+        </div>
+        </div>
+      <!--        <div class="space10"></div>
+      </div-->
+
+      <!--div>
+      <div style="display: inline-block;">
+        <div>
+          <div style="display: inline-block;">img</div>
+          <div style="display: inline-block;">adresse</div>
+        </div>
+        <div>kontakt</div>
+      </div>
+      <div style="display: inline-block;">social</div>
+    </div-->
+    </div>
+  </div>
+</div>

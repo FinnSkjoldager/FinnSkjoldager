@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    margin: 0px;
+    padding: 0px;
+  }
+  .navigator{    
+  } 
+ /* small size viewport */
+@media screen and (max-width: 599px) { 
+  .container {
+    display: block;
+  }
+  .navigator{
+    display: block;    
+  } 
+}  
+.content {
+    width: 100%;
+  }
+
+  .content {
+    flex-grow: 1;
+  }
+  
+  .buttons {
+    margin-bottom: 10px;
+  }
+
+  button {
+    background-color: #3c78d8;
+    color: white;
+    border: 0;
+    padding: .5rem 1rem;
+    width: 80px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  button.selected {
+    background-color: #1c4587;
+  }
+.event1{
+    border-radius: 10px;
+    font-size: 14px;
+}

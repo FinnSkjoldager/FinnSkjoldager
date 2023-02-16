@@ -1,0 +1,141 @@
+<div class="bag-img">
+  <div class="container">
+    <div class="textTop">Ret besøg
+      <div style="float: right;">
+        <a class="textBack" onclick="history.back()" mat-button>
+          <mat-icon>arrow_back</mat-icon>Tilbage
+        </a>
+      </div>
+    </div>
+    <form (ngSubmit)="submit()" #besoegForm="ngForm" class="besoeg-form center" novalidate>
+      <div class="form-group">
+        <input type="hidden" id="Id" name="Id" value="{{besoeg.id}}">
+        <label>Nr</label>
+        <input title="Nr" type="text" class="form-control" name="Nr" [(ngModel)]="besoeg.nr" #Nr="ngModel" required />
+        <div class="alert alert-danger" [hidden]="Nr.pristine || Nr.valid">
+          Nr kræves!
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Postnummer</label>
+        <input title="Postnummer" type="text" class="form-control" name="nr" [(ngModel)]="besoeg.postnummer"
+          #Postnummer="ngModel" required />
+        <div class="alert alert-danger" [hidden]="Postnummer.pristine || Postnummer.valid">
+          Postnummer kræves!
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Besøgsdato</label>
+        <div id="container">
+          <div class="div_float">
+            <input matInput [matDatepicker]="picker" title="Besogsdato" type="text" class="form-control"
+              name="Besogsdato" [(ngModel)]="besoeg.besogsdato" #Besogsdato="ngModel" required readonly>
+          </div>
+          <div class="div_float">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </div>
+        </div>
+        <div class="alert alert-danger" [hidden]="Besogsdato.pristine || Besogsdato.valid">
+          Besogsdato kræves !
+        </div>
+      </div><br><br>
+      <div class="form-group">
+        <label>Firmanavn</label>
+        <input title="Firmanavn" type="text" class="form-control" name="Firmanavn" [(ngModel)]="besoeg.firmanavn"
+          #Firmanavn="ngModel" required />
+        <div class="alert alert-danger" [hidden]="Firmanavn.pristine || Firmanavn.valid">
+          Firmanavn kræves !
+        </div>
+      </div>
+      <div class="form-group">
+        <label>GPSpunkt</label>
+        <input title="GPSpunkt" type="text" class="form-control" name="GPSpunkt" [(ngModel)]="besoeg.gpspunkt"
+          #GPSpunkt="ngModel" />
+      </div>
+      <div class="form-group">
+        <label>Adresse</label>
+        <input title="Adresse" type="text" class="form-control" name="Adresse" [(ngModel)]="besoeg.adresse"
+          #Adresse="ngModel" />
+      </div>
+      <div class="form-group">
+        <label>Hjemmeside</label>
+        <input title="Hjemmeside" type="text" class="form-control" name="Hjemmeside" [(ngModel)]="besoeg.hjemmeside"
+          #Hjemmeside="ngModel" />
+      </div>
+      <div class="form-group">
+        <label>Kontaktperson</label>
+        <input title="Kontaktperson" type="text" class="form-control" name="Kontaktperson"
+          [(ngModel)]="besoeg.kontaktperson" #Kontaktperson="ngModel">
+      </div>
+      <div class="form-group">
+        <label>MailAdresse</label>
+        <input title="MailAdresse" type="text" class="form-control" name="MailAdresse" [(ngModel)]="besoeg.mailadresse"
+          #MailAdresse="ngModel" />
+      </div>
+      <div class="form-group">
+        <label>TelefonNr</label>
+        <input title="TelefonNr" type="text" class="form-control" name="TelefonNr" [(ngModel)]="besoeg.telefonnr"
+          #TelefonNr="ngModel" />
+      </div>
+      <div class="form-group">
+        <label>Uopfordretansog</label>
+        <input title="Uopfordretansog" type="checkbox" class="form-control checkbox" name="Uopfordretansog"
+          [(ngModel)]="besoeg.uopfordretansog" #Uopfordretansog="ngModel" />
+      </div>
+      <div class="form-group">
+        <label>Ledigtjob</label>
+        <input title="Ledigtjob" type="checkbox" class="form-control checkbox" name="Ledigtjob"
+          [(ngModel)]="besoeg.ledigtjob" #Ledigtjob="ngModel" />
+      </div>
+      <div class="form-group">
+        <label>Kommentarer</label>
+        <textarea title="Kommentarer" type="text" class="form-control" name="Kommentarer"
+          [(ngModel)]="besoeg.kommentarer" #Kommentarer="ngModel" rows="10"></textarea>
+      </div>
+      <!--
+    <div class="form-group">
+      @tinymce/tinymce-angular
+      div class="form-group">
+      <label>Kommentarer</label>
+      <editor
+        apiKey="n21iynxrkryv0h5k5mels9isxpdhpds3ef6edshnw0l4q6v3"
+        [init]="{
+          icons: 'material',
+          skin: 'borderless',
+          plugins: 'wordcount',
+          menubar: false,
+          min_height: 150
+        }"
+        name="Kommentarer"
+        [(ngModel)]="besoeg.Kommentarer"
+        #Kommentarer="ngModel"
+      ></editor>
+    </div-->
+      <!--{{ besoeg.Id }}&nbsp;&nbsp;{{ !deleteMessageEnabled }}
+    
+    -->
+      <div *ngIf="besoeg" id="buttonbar">
+        <div class="alert alert-warning" *ngIf="besoeg.id && deleteMessageEnabled">
+          Slet besoeg ?&nbsp;&nbsp;<button class="btn btn-danger" (click)="delete($event)">
+            Ja</button>&nbsp;&nbsp;
+          <button class="btn btn-default" (click)="deleteMessageEnabled = false">
+            Nej
+          </button>
+        </div>
+        <button class="btn btn-danger" *ngIf="besoeg.id && !deleteMessageEnabled" (click)="deleteMessageEnabled = true">
+          Slet
+        </button>
+        <div class="pull-right" *ngIf="!deleteMessageEnabled">
+          <button class="btn btn-default button11" (click)="cancel($event)">
+            Afbryd</button>&nbsp;&nbsp;
+          <button type="submit" class="btn btn-success" [disabled]="besoegForm.pristine || !besoegForm.valid">
+            {{ operationText }}
+          </button>
+        </div>
+      </div>
+      <div class="alert alert-danger" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>

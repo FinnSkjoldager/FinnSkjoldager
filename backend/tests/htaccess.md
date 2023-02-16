@@ -1,0 +1,48 @@
+DirectoryIndex index.php
+RewriteEngine On
+#AddHandler application/x-httpd-phplast .php
+#https://helponnet.com/2022/01/08/root-to-subfolder-redirection/
+#rewrite root to subfolder
+#including all files and folders
+#exclude the destination folder
+#RewriteCond %{HTTPS} !=on
+RewriteCond %{REQUEST_URI} !^/public [NC]
+RewriteRule ^(.*)$ /public/$1 [L]
+<Files "\.(gif|jpe?g|png)$">
+    order deny,allow
+    allow from all
+</Files>
+
+DirectoryIndex index.php
+RewriteEngine On
+AddType application/x-httpd-php-latest .php
+#https://helponnet.com/2022/01/08/root-to-subfolder-redirection/
+#rewrite root to subfolder
+#including all files and folders
+#exclude the destination folder
+#RewriteCond %{HTTPS} !=on
+RewriteCond %{REQUEST_URI} !^/ [NC]
+RewriteRule ^(.*)$ /$1 [L]
+<Files "\.(gif|jpe?g|png)$">
+    order deny,allow
+    allow from all
+</Files>
+
+
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteBase /public
+        # change above to your site i.e., RewriteBase /whatever/public/
+
+        # Redirect Trailing Slashes...
+        RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+        # Handle Front Controller...
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteRule ^ /public/index.php [L]
+    </IfModule>

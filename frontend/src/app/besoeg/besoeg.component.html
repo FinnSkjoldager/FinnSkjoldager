@@ -1,0 +1,59 @@
+<div class="container">
+  <div>
+      <div class="textTop">Besøg
+      <div style="float: right;">
+        <a class="textBack" onclick="history.back()"  mat-button><mat-icon>arrow_back</mat-icon>Tilbage</a>
+      </div>
+  </div>    
+    <div><button class="btn btn-success" routerLink="/besoeg-edit/0" id="opret">Opret</button></div>
+  </div>
+  <table class="styled-table center">
+    <thead>
+      <tr>
+        <th></th>
+        <th cmSortBy="Besøgsnr" (sorted)="sort($event)">Besøgsnr</th>
+        <th cmSortBy="Besogsdato" (sorted)="sort($event)">Besøgsdato</th>
+        <th cmSortBy="Postnummer" (sorted)="sort($event)">Postnummer</th>
+        <th cmSortBy="Firmanavn" (sorted)="sort($event)">Firmanavn</th>
+        <th cmSortBy="GPSpunkt" (sorted)="sort($event)">GPS punkt</th>
+        <th cmSortBy="Adresse" (sorted)="sort($event)">Adresse</th>
+        <th cmSortBy="Hjemmeside" (sorted)="sort($event)">Hjemmeside</th>
+        <th cmSortBy="Kontaktperson" (sorted)="sort($event)">Kontaktperson</th>
+        <th cmSortBy="Mail adresse" (sorted)="sort($event)">Mail adresse</th>
+        <th cmSortBy="Telefon nr." (sorted)="sort($event)">Telefon nr.</th>
+        <th cmSortBy="uopfordretansog" (sorted)="sort($event)">Ønsker firma uopfordret ansøgning ?</th>
+        <th cmSortBy="ledigtjob" (sorted)="sort($event)">Muligt ledigt job indenfor 3 mdr ?</th>
+        <th cmSortBy="Kommentarer" (sorted)="sort($event)">Kommentarer</th>
+        <!-- Or you can do this directly rather than using sort-by directive -->
+        <th (click)="sort('orderTotal')">Antal besøg</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let besoeg of besoegArr">
+        <td id="td_button">
+          <button class="btn btn-success" [routerLink]="['/besoeg-show',besoeg.id]">Vis</button>
+          <button class="btn btn-success" [routerLink]="['/besoeg-edit',besoeg.id]">Ret</button>
+          <button class="btn btn-success" [routerLink]="['/besoeg-medlem',besoeg.id]">Medlem</button>
+        </td>
+        <td>{{ besoeg.nr}}</td>
+        <td>{{ besoeg.besogsdato}}</td>
+        <td>{{ besoeg.postnummer}}</td>
+        <td>{{ besoeg.firmanavn}}</td>
+        <td>{{ besoeg.gpspunkt }}</td>
+        <td>{{ besoeg.adresse }}</td>
+        <td>{{ besoeg.hjemmeside }}</td>
+        <td>{{ besoeg.kontaktperson }}</td>
+        <td>{{ besoeg.mailadresse }}</td>
+        <td>{{ besoeg.telefonnr }}</td>
+        <td>{{ besoeg.uopfordretansog }}</td>
+        <td>{{ besoeg.ledigtjob }}</td>
+        <td>{{ besoeg.kommentarer }}</td>
+        <td></td>
+      </tr>
+      <!--tr *ngIf="!besoegArr.length">
+                          <td>&nbsp;</td>
+                          <td colspan="7">No Records Found</td>
+                      </tr-->
+    </tbody>
+  </table>
+</div>

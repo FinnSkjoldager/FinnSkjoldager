@@ -1,0 +1,54 @@
+.container{
+  width: 600px;
+  padding:20px;
+  margin:auto;
+}
+.besoeg-form{
+  margin: 0px;
+  padding: 10px;
+  border-radius:15px;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid black;
+}
+.besoeg-form input[type='text'], 
+.besoeg-form input[type='number'],
+.besoeg-form input[type='email'],
+.besoeg-form select {
+    width:300px;
+}
+
+.besoeg-form .ng-invalid {
+  border-left: 5px solid #a94442;
+}
+
+.besoeg-form .ng-valid {
+  border-left: 5px solid #42A948;
+}
+.checkbox{
+  font-size: 20px;
+  width: 1em;
+  height: 1em;
+  margin: 0;
+  border:none;
+  border-radius: 10%;
+}
+#buttonbar{
+  height: 40px;
+}
+.div_float{
+  float: left;
+}
+/* medium size viewport */
+@media screen and (max-width: 959px) {
+  .container{
+    width: 100%;
+  }
+}
+/* small size viewport */
+@media screen and (max-width: 599px) {
+  .container{
+    width: 100%;
+  }
+}

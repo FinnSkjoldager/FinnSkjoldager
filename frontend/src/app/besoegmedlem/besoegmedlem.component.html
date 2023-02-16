@@ -1,0 +1,42 @@
+<div class="bag-img">
+<div class="container" *ngIf="besoeg">
+    <div class="textTop">Medlemmer besøg
+        <div style="float: right;">
+          <a class="textBack" onclick="history.back()"  mat-button><mat-icon>arrow_back</mat-icon>Tilbage</a>
+        </div>
+    </div>
+    <div>
+    <div style="float: left; margin: 10px;">
+        <button type="button" class="btn btn-success" [routerLink]="['/besoeg-medlem-edit',besoeg.id,0,besoeg.firmanavn
+        ]">Tilføj medlem</button>
+     </div>
+    <div class="textBesoeg" style="float: center;">
+        <b>Besøg hos:</b>&nbsp;&nbsp;{{ besoeg.firmanavn }},&nbsp;&nbsp;{{ besoeg.adresse }},&nbsp;&nbsp;{{
+            besoeg.postnummer }}&nbsp;&nbsp;
+    <div>
+    </div>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Fornavn</th>
+                <th>Efternavn</th>
+                <th>Telefonnr</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let medlem of medlemmer">
+                <td>{{medlem.id}}</td>
+                <td>{{medlem.fornavn}}</td>
+                <td>{{medlem.efternavn}}</td>
+                <td>{{medlem.telefonnr}}</td>
+                <td>
+                    <!--button type="button" class="btn btn-success" [routerLink]="['/medlem/home', medlem.id]">Update</button-->
+                    <button type="button" class="btn btn-success" (click)="delete($event, medlem.id)">Fjern</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>

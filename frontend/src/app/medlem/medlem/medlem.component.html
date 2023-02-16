@@ -1,0 +1,32 @@
+<div class="container">
+    <div style="margin:10px" >
+        <div class="textTop">Medlem
+        <div style="float: right;">
+          <a class="textBack" onclick="history.back()"  mat-button><mat-icon>arrow_back</mat-icon>Tilbage</a>
+        </div>
+    </div>    
+    <!--button type="button" class="btn btn-success" [routerLink]="['/statestik',0]">Create new product</button-->
+    <table  class="styled-table  center">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Fornavn</th>
+                <th>Efternavn</th>
+                <th>Telefonnr</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let medlem of medlemmer" (click)="onRowSelected(row)">
+                <td>{{medlem.id}}</td>
+                <td>{{medlem.fornavn}}</td>
+                <td>{{medlem.efternavn}}</td>
+                <td>{{medlem.telefonnr}}</td>
+                <td>
+                    <!--button type="button" class="btn btn-success" [routerLink]="['/medlem/home', medlem.id]">Update</button>
+                    <button type="button" class="btn btn-success" (click)="delete(medlem.id, $event)">Fjern</button-->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

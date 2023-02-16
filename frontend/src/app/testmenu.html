@@ -1,0 +1,25 @@
+<div *ngFor="let item of menuArr" style="display: inline-block;">
+    <div *ngIf="item.subMenu" style="display: inline-block;">
+        <button mat-button [matMenuTriggerFor]="belowMenu">
+            <mat-icon>{{ item.maticon }}</mat-icon>
+            {{ item.name }}
+        </button>
+        <mat-menu #belowMenu="matMenu" yPosition="below">
+            <div *ngFor="let subItem of item.subMenu">
+            <a class="mat-menu-a" routerLink="{{ subItem.routerLink }}" mat-menu-item>
+                <mat-icon>{{ subItem.maticon }}</mat-icon>
+                {{ subItem.name }}
+            </a>
+        </div>
+        </mat-menu>
+    </div>
+</div>
+<br>PRINT<br>
+<div *ngFor="let item of menuArr" style="display: block;">
+    <div *ngIf="item.subMenu" style="display: block;">
+        BUTTON ICON: {{ item.maticon }} _NAME: {{ item.name }}_SUBMENU:{{ item.subMenu.length }}
+        <div *ngFor="let subItem of item.subMenu">
+            ROUTE:{{ subItem.routerLink }}_ICON:{{ subItem.maticon }}_NAME:{{ subItem.name }}
+        </div>
+    </div>
+</div>
